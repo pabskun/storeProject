@@ -1,0 +1,151 @@
+<section>
+  <md-content layout-padding>
+    <div>
+      <form name="userForm">
+
+
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>First name</label>
+            <input ng-model="userCtrl.firstName">
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Last name</label>
+            <input ng-model="userCtrl.lastName">
+          </md-input-container>
+        </div>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Email</label>
+          <input ng-model="userCtrl.email">
+        </md-input-container>
+      </div>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Pass</label>
+        <input ng-model="userCtrl.password">
+      </md-input-container>
+    </div>
+
+        <md-input-container class="md-block">
+          <label>Address</label>
+          <input ng-model="user.address">
+        </md-input-container>
+
+        <div layout-gt-xs="row">
+          <md-input-container class="md-block" flex-gt-xs>
+            <label>Company (Disabled)</label>
+            <input ng-model="user.company" >
+          </md-input-container>
+
+          <md-input-container>
+            <label>Enter date</label>
+            <md-datepicker ng-model="user.submissionDate"></md-datepicker>
+          </md-input-container>
+        </div>
+
+        <md-input-container md-no-float class="md-block">
+          <input ng-model="user.address2" placeholder="Address 2">
+        </md-input-container>
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>City</label>
+            <input ng-model="user.city">
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>State</label>
+            <md-select ng-model="user.state">
+              <md-option ng-repeat="state in states" value="{{state.abbrev}}">
+                {{state.abbrev}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Postal Code</label>
+            <input name="postalCode" ng-model="user.postalCode" placeholder="12345"
+                   required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+
+            <div ng-messages="userForm.postalCode.$error" role="alert" multiple>
+              <div ng-message="required" class="my-message">You must supply a postal code.</div>
+              <div ng-message="pattern" class="my-message">That doesn't look like a valid postal
+                code.
+              </div>
+              <div ng-message="md-maxlength" class="my-message">
+                Don't use the long version silly...we don't need to be that specific...
+              </div>
+            </div>
+          </md-input-container>
+        </div>
+
+        <md-input-container class="md-block">
+          <label>Biography</label>
+          <textarea ng-model="user.biography" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+        </md-input-container>
+
+      </form>
+    </div>
+  </md-content>
+
+
+
+            <md-button ng-show="userCtrl.btnadd" ng-click="userCtrl.save()" class="btn1" >Save</md-button>
+            <md-button ng-show="userCtrl.btnedit" ng-click="userCtrl.edit()" class="btn1">Update</md-button>
+        </form>
+      </div>
+
+  </md-content>
+  </div>
+
+<!--
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.
+-->
+</form>
+
+<table id="tblDatos" >
+  <input type="text" id="txtApellido" placeholder="Buscar" ng-model="search">
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Password</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="objUser in userCtrl.users | filter: search">
+        <td>{{objUser.firstName}}</td>
+        <td>{{objUser.lastName}}</td>
+        <td>{{objUser.email}}</td>
+        <td>{{objUser.password}}</td>
+
+        <td><button ng-click="userCtrl.delete(objUser._id)">Eliminar</button></td>
+        <td><button ng-click="userCtrl.update(objUser)">Update</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<md-content class="md-padding" layout-xs="column" layout="row">
+    <div flex-xs flex-gt-xs="50" layout="column" ng-repeat="objUser in userCtrl.users">
+      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{objUser.firstName}}</span>
+            <span class="md-subhead">{{objUser.lastName}}</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-lg card-media"><span class="glyphicon glyphicon-user"style="font-size:152px"></span></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>Action 1</md-button>
+          <md-button>Action 2</md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+  </md-content>
+
+</section>

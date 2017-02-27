@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Form</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+      <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+    <div ng-controller="tabCtrl" layout="column" class="demo" >
+
+
+        <md-toolbar>
+          <h2 class="md-toolbar-tools">
+            <span></span>
+          </h2>
+        </md-toolbar>
+        <md-tabs md-stretch-tabs
+                 md-selected="selectedIndex">
+           <md-tab label="Users"></md-tab>
+           <md-tab label="tab2"></md-tab>
+           <md-tab label="tab3"></md-tab>
+        </md-tabs>
+
+        <div id="content" ui-view > </div>
+
+      </div>
+
+
+    <script src="vendor/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
+    <script src="app.js"></script>
+    <script src="index.route.js"></script>
+
+    <script src="components/users/user.controller.js"></script>
+    <script src="components/users/user.service.js"></script>
+
+
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+    <!-- python -m SimpleHTTPServer 9000   copiar en la terminal, mac linux, para crear un localhost-->
+
+  </body>
+</html>
